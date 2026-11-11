@@ -123,28 +123,28 @@ VISION_HTML = """
 
   <div class="image-grid">
     <div class="image-card">
-      <img src="/static/RAB Rent a Bike Executive Office.jpg" alt="RAB Future Office Workspace">
+      <img src="/static/RAB Rent a Bike Executive Office.png" alt="RAB Future Office Workspace">
     </div>
     <div class="image-card">
-      <img src="/static/Modern RAB Rent A Bike Office.jpg" alt="RAB Future Reception">
+      <img src="/static/Modern RAB Rent A Bike Office.png" alt="RAB Future Reception">
     </div>
     <div class="image-card">
-      <img src="/static/future-meeting.jpg" alt="RAB Future Strategy Meeting">
+      <img src="/static/future-meeting.png" alt="RAB Future Strategy Meeting">
     </div>
 
     
     <div class="image-card">
-      <img src="/static/RAB Racer_ Ride More, Dream More.jpg" alt="The future RAB competitive cycling team">
+      <img src="/static/RAB Racer_ Ride More, Dream More.png" alt="The future RAB competitive cycling team">
     </div>
     <div class="image-card">
-      <img src="/static/RAB Bikes_ More Rides, More Dreams.jpg" alt="RAB - Affordable Mobility. Healthier Living. A Greener Namibia">
+      <img src="/static/RAB Bikes_ More Rides, More Dreams.png" alt="RAB - Affordable Mobility. Healthier Living. A Greener Namibia">
     </div>
     <div class="image-card">
-      <img src="/static/RAB Rent A Bike Office Concept Board.jpg" alt="RAB Collage - Ride Today Work Tomorrow">
+      <img src="/static/RAB Rent A Bike Office Concept Board.png" alt="RAB Collage - Ride Today Work Tomorrow">
     </div>    
 
     <div class="image-card">
-      <img src="/static/RAB Future Headquarters Vision Poster-1.jpg">
+      <img src="/static/RAB Future Headquarters Vision Poster-1.png">
     </div> 
 
     
