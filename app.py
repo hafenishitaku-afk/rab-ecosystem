@@ -15,7 +15,7 @@ MODULES = [
     {
         "name": "RAB Community",
         "tagline": "Onboard local shops as rental stations. Real-time chat and voice notes.",
-        "url": "https://rab-community.onrender.com",  # Ensure this is correct!
+        "url": "https://rab-community-app.onrender.com",
         "status": "Operational",
         "stack": "Flask · SQLite/Postgres · Rate limiting",
     },
@@ -35,10 +35,6 @@ MODULES = [
     },
 ]
 
-# ==========================================
-# HTML TEMPLATES
-# ==========================================
-
 HOME_HTML = """
 <!doctype html>
 <html>
@@ -51,25 +47,32 @@ HOME_HTML = """
   h1 { font-size: 2.4rem; margin: 0 0 8px; }
   .sub { color: #9fb3d1; margin-bottom: 20px; }
   .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 30px; }
-  .card { background: #15294f; border-radius: 12px; padding: 24px; border: 1px solid #23407a; }
-  .card h2 { margin: 0 0 8px; font-size: 1.2rem; color: #ffe500; }
-  .card p { color: #c5d3e8; margin: 0 0 16px; line-height: 1.4; }
-  .card .stack { font-size: 0.8rem; color: #7f93b3; margin-bottom: 12px; }
-  .card a { display: inline-block; background: #ffe500; color: #0d1f46; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; }
-  .card a:hover { background: #ffef6a; }
-  .status { display: inline-block; font-size: 0.75rem; padding: 3px 10px; border-radius: 999px; background: #1e7a3d; margin-bottom: 12px; }
   
-  /* Vision Button */
+  /* Standard Module Cards */
+  .card { background: #15294f; border-radius: 12px; padding: 24px; border: 1px solid #23407a; display: flex; flex-direction: column; }
+  .card h2 { margin: 0 0 8px; font-size: 1.2rem; color: #ffe500; }
+  .card p { color: #c5d3e8; margin: 0 0 16px; line-height: 1.4; flex-grow: 1; }
+  .card .stack { font-size: 0.8rem; color: #7f93b3; margin-bottom: 12px; }
+  .card a { display: inline-block; background: #ffe500; color: #0d1f46; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center; }
+  .card a:hover { background: #ffef6a; }
+  .status { display: inline-block; font-size: 0.75rem; padding: 3px 10px; border-radius: 999px; background: #1e7a3d; margin-bottom: 12px; align-self: flex-start; }
+  
+  /* Corporate Mission/Vision Cards */
+  .corporate-card { background: #0a1731; border: 2px solid #23407a; }
+  .corporate-card h2 { font-size: 1.4rem; border-bottom: 2px solid #ffe500; padding-bottom: 10px; margin-bottom: 15px; }
+  .corporate-card ul { padding-left: 20px; margin: 0; color: #c5d3e8; line-height: 1.6; }
+  .corporate-card li { margin-bottom: 8px; }
+  .corporate-card li strong { color: #fff; }
+
   .vision-btn { display: inline-block; background: transparent; color: #ffe500; border: 2px solid #ffe500; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; transition: 0.3s; }
   .vision-btn:hover { background: #ffe500; color: #0d1f46; }
-  
   footer { margin-top: 60px; color: #7f93b3; font-size: 0.85rem; text-align: center; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>RAB Ecosystem</h1>
-  <p class="sub">Tools for the Namibian gig economy — built, deployed, and running.</p>
+  <p class="sub">Tools for the Namibian gig economy — built, deployed, and running by RAB BICYCLE SOLUTIONS.</p>
   
   <a href="/vision" class="vision-btn">✨ View the Future of RAB →</a>
 
@@ -83,14 +86,35 @@ HOME_HTML = """
       {% if m.url != '#' %}
       <a href="{{ m.url }}" target="_blank">Open live demo →</a>
       {% else %}
-      <a href="#" style="opacity:.4;pointer-events:none;">Coming online</a>
+      <a href="#" style="opacity:.4;pointer-events:none;background:#7f93b3;">Coming online</a>
       {% endif %}
     </div>
     {% endfor %}
+    
+    <!-- NEW: Vision Card -->
+    <div class="card corporate-card">
+      <h2>Our Vision</h2>
+      <p style="margin-bottom: 10px; font-weight: bold; color: #fff;">To be Namibia's leading bicycle rental service, empowering people and building healthier communities.</p>
+      <ul>
+        <li><strong>Job Creation:</strong> Creating sustainable income for youth.</li>
+        <li><strong>Healthier Customers:</strong> Promoting active, healthy lifestyles.</li>
+        <li><strong>Greener Future:</strong> Reducing carbon emissions in our cities.</li>
+      </ul>
+    </div>
+
+    <!-- NEW: Mission Card -->
+    <div class="card corporate-card">
+      <h2>Our Mission</h2>
+      <p style="margin-bottom: 10px; font-weight: bold; color: #fff;">To provide safe, affordable, and reliable bicycle rentals while driving socio-economic growth.</p>
+      <ul>
+        <li><strong>Production Increases:</strong> Getting workers to their jobs faster.</li>
+        <li><strong>Community Impact:</strong> Partnering with local shops as rental stations.</li>
+        <li><strong>Safe Transport:</strong> Providing helmets and maintained bicycles.</li>
+      </ul>
+    </div>
+
   </div>
-  <footer>
-    Built by KaxHafeni · RAB BICYCLE SOLUTIONS
-  </footer>
+  <footer>Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
 </div>
 </body>
 </html>
@@ -150,17 +174,12 @@ VISION_HTML = """
     
   </div>
 
-  <footer>
-    Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS
-  </footer>
+
+  <footer>Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
 </div>
 </body>
 </html>
 """
-
-# ==========================================
-# ROUTES
-# ==========================================
 
 @app.route("/")
 def home():
@@ -172,3 +191,8 @@ def vision():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+
+
+
+
+
