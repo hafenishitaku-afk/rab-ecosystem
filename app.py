@@ -86,7 +86,7 @@ HOME_HTML = """
       {% if m.url != '#' %}
       <a href="{{ m.url }}" target="_blank">Open live demo →</a>
       {% else %}
-      <a href="#" style="opacity:.4;pointer-events:none;background:#7f93b3;">Coming online</a>
+      <a href="#" style="opacity:1;pointer-events:none;background:#1e7a3d;color:#ffe500;">Coming online</a>
       {% endif %}
     </div>
     {% endfor %}
@@ -114,7 +114,10 @@ HOME_HTML = """
     </div>
 
   </div>
-  <footer>Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
+
+<footer><a href="/terms" style="color:#9fb3d1; text-decoration:none;">Terms & Conditions</a> · Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
+
+
 </div>
 </body>
 </html>
@@ -175,19 +178,87 @@ VISION_HTML = """
   </div>
 
 
-  <footer>Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
+  <footer><a href="/terms" style="color:#9fb3d1; text-decoration:none;">Terms & Conditions</a> · Built by Shitaku Hafeni · RAB BICYCLE SOLUTIONS</footer>
 </div>
 </body>
 </html>
 """
 
+
+
+TERMS_HTML = """
+<!doctype html>
+<html>
+<head>
+<title>Terms & Conditions - RAB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #0d1f46; color: #fff; }
+  .wrap { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 2.4rem; margin: 0 0 8px; color: #ffe500; }
+  h3 { color: #ffe500; margin-top: 30px; border-bottom: 1px solid #23407a; padding-bottom: 5px; }
+  p, li { color: #c5d3e8; line-height: 1.6; }
+  .back-btn { display: inline-block; color: #9fb3d1; text-decoration: none; margin-bottom: 20px; font-weight: bold; }
+  .back-btn:hover { color: #ffe500; }
+  .highlight { background: #15294f; padding: 15px; border-left: 4px solid #ffe500; border-radius: 4px; margin: 20px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="back-btn">← Back to Ecosystem</a>
+  <h1>Terms & Conditions</h1>
+  <p><strong>RAB BICYCLE SOLUTIONS - Bicycle Rental Agreement</strong></p>
+  
+  <h3>1. The Parties</h3>
+  <p>This agreement is made between RAB BICYCLE SOLUTIONS and the individual named on the rental receipt.</p>
+  
+  <h3>2. Rental Period, Working Hours & Charges</h3>
+  <div class="highlight">
+    <p><strong>Working Hours:</strong> RAB stations operate strictly from <strong>06:00 AM to 06:00 PM</strong>.</p>
+    <p><strong>Billing:</strong> Rentals are billed at a flat rate of <strong>N$1.00 per minute</strong> during working hours.</p>
+    <p><strong>Overnight / After-Hours Fee:</strong> If a bicycle is not returned by 18:00 (6:00 PM), an overnight holding fee of <strong>N$10.00 per hour</strong> will apply for every hour the bike is kept outside of working hours, until it is returned the next morning.</p>
+    <p><strong>No Daily Cap:</strong> Because our stations are strategically located within short distances of one another, there is no daily cap. Charges strictly accumulate based on time until the bicycle is returned to a station.</p>
+  </div>
+  <p><strong>Late Returns:</strong> If the bicycle is not returned by the agreed time, the per-minute and overnight charges will continue to apply until the bicycle is safely returned.</p>
+  <p><strong>Deposit:</strong> A refundable security deposit is required before every rental. This deposit will be refunded in full upon return of the bicycle in good condition and settlement of all rental fees.</p>
+  <p><strong>Unpaid Balances:</strong> RAB reserves the right to withhold the deposit or take legal action to recover unpaid rental fees.</p>
+  
+  <h3>3. Customer Responsibilities & Safety</h3>
+  <p>Helmets are provided and must be worn at all times. The Customer agrees to obey all Namibian traffic laws. The bicycle must not be used for racing, stunts, or carrying multiple passengers.</p>
+
+  <h3>4. Damage, Loss, and Theft</h3>
+  <p>The Customer is fully liable for the bicycle and equipment from pickup until return. Damage or loss will be deducted from the security deposit or paid directly by the Customer.</p>
+
+  <h3>5. Accidents and Liability</h3>
+  <p>The Customer rides at their own risk. RAB BICYCLE SOLUTIONS is not liable for any personal injury or property damage sustained during the rental period.</p>
+
+  <h3>6. Breakdowns</h3>
+  <p>If a mechanical failure occurs, the Customer must stop riding and contact RAB immediately.</p>
+
+  <p style="margin-top: 40px; font-size: 0.9rem; color: #7f93b3;">By renting a bicycle, you acknowledge that you have read and agreed to these terms.</p>
+</div>
+</body>
+</html>
+"""
+
+
+
+
 @app.route("/")
 def home():
     return render_template_string(HOME_HTML, modules=MODULES)
 
+@app.route("/terms")
+def terms():
+    return render_template_string(TERMS_HTML)
+
+
 @app.route("/vision")
 def vision():
     return render_template_string(VISION_HTML)
+
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
